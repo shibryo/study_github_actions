@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  coverage:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,10 +34,10 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: coverage
-          path: htmlcov/
+          name: build
+          path: build/
   deploy:
-    needs: coverage
+    needs: build
     permissions:
       pages: write
       id-token: write
